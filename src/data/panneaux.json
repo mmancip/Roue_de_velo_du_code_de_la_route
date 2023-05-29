@@ -1,0 +1,19 @@
+{"titre":"Que signigie ce panneau ?",
+ "questions":[
+     ["chemin_piéton_recommandé","chemin_piéton_recommandé.png","chemin piéton ou voie piétonne - accessible aux vélos, à la vitesse du pas."],
+     ["cédez-le-passage","cédez-le-passage.png","cédez le passage, aussi pour les vélos."],
+     ["double_sens_cyclable","double_sens_cyclable.png", "double sens cyclable dans les rues à sens unique: prévient les automobiliste, réglémentaire."],
+     ["feu_avec_cédez-le-passage-vélo","feu_avec_cédez-le-passage-vélo.png","Nouveau cédez le passage au feu pour les vélos dans le(s) sens indiqué(s) seulement."],
+     ["impasse_sauf_vélo_et_pitéon","impasse_sauf_vélo_et_pitéon.png","Impasse avec passage piétons et vélos possible."],
+     ["interdit_aux_vélos","interdit_aux_vélos.png","Interdit aux vélos (annonce une route pour automobiles)."],
+     ["interdit_sauf_vélo","interdit_sauf_vélo.png","Interdit sauf vélo pour matérialiser les doubles sens cyclables (facultatif)."],
+     ["interdit_à_tout_véhicule_motorisé","interdit_à_tout_véhicule_motorisé.png","Interdit à tous les véhicules motorisés (idem voie verte)."],
+     ["pannonceau_cédez-le-passage-vélo","pannonceau_cédez-le-passage-vélo.png","Pannonceau du cédez le passage au feu pour les vélos dans le(s) sens indiqué(s) seulement."],
+     ["piste_cyclable_recommandée","piste_cyclable_recommandée.png","Piste cyclable recommandée."],
+     ["sens_giratoire","sens_giratoire.png","Sens giratoire aux rond points aussi pour les vélos."],
+     ["stop","stop.png","Stop aussi pour les vélos."],
+     ["voie_verte","voie_verte.png","Voie verte (idem panneau interdit aux véhicules motorisés)."],
+     ["vélo_pied_à_terre","vélo_pied_à_terre.png", "Vélo pied à terre recommandé, vélo au pas possible."],
+     ["zone_de_rencontre","zone_de_rencontre.png","Zone de rencontre; les piétons marchent dans la zone et sont prioritaires."]
+]}
+

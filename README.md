@@ -16,7 +16,13 @@ And use administration PowerShell window
  nvm use 18.16.0
 In source dir use :
 > npm install
+
+Execution (temporaire) :
+> cd src
 > .\node_modules\.bin\http-server -s -o --trace-deorecation
+
+Données ; les données de questions sont dans les fichiers json (très facile à modifier) dans src/data.
+Si vous voulez les améliorer, passer les moi (issue sous Github ou mèl) après avoir modifié, sauvé, relancé la page et testé.
 
 
 Phaser 3 :

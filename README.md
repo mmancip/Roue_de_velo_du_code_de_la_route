@@ -3,9 +3,11 @@ Small game to learn french Code de la Route laws with bicycles or not.
 
 Préparation de la Roue du Code de la Route :
 https://semestriel.framapad.org/p/yTPZUXHI3Iaj9ScHutrs#L85
+(Merci de ne pas modifier sans l'accord du développeur, please don't change without agreement)
 
 Questions :
 https://semestriel.framapad.org/p/Roue_du_code_de_la_route
+(Merci de ne pas modifier sans l'accord du développeur, please don't change without agreement)
 
 Install :
 install node on Windows or Linux OS :

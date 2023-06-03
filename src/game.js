@@ -106,11 +106,11 @@ window.onload = function() {
             height: 1080
         },
 
-       // game background color
-       backgroundColor: 0x000000,
-
-       // scenes used by the game
-       scene: [playGame]
+	// game background color
+	backgroundColor: 0x000000,
+	
+	// scenes used by the game
+	scene: [playGame]
     };
     
     // game constructor

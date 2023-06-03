@@ -125,7 +125,14 @@ class playGame extends Phaser.Scene{
 
     // constructor
     constructor(){
-        super("PlayGame");
+        super({ pack: {
+            "files": [ 
+		{ type: 'json', key: 'Circulations', url: 'data/circulations.json'},
+		{ type: 'json', key: 'Nouveautes', url: 'data/nouveautés.json'},
+		{ type: 'json', key: 'Panneaux', url: 'data/panneaux.json'},
+		{ type: 'json', key: 'Equipements_comportements', url: 'data/équipements_comportements.json'}
+	    ]
+	}})
     }
 
     // method to be executed when the scene preloads
@@ -155,37 +162,18 @@ class playGame extends Phaser.Scene{
 	//     }}
 	
 	//this.load.json('Categories', 'data/Categories.json');
-	this.load.json('Circulations', 'data/circulations.json');
-	this.load.json('Nouveautes', 'data/nouveautés.json');
-	this.load.json('Panneaux', 'data/panneaux.json');
-	this.load.json('Equipements_comportements', 'data/équipements_comportements.json');
+
+	this.PanneauxJSON=this.cache.json.get('Panneaux');
+	
+	for(let i = 0; i < this.PanneauxJSON["questions"].length; i++){
+	    this.load.image(this.PanneauxJSON["questions"][i][0],"data/panneaux/"+this.PanneauxJSON["questions"][i][1])
+	}
+	// console.log(this.textures.list)
 
 	this.wheelwidth=800
 	this.wheelheight=800
-	
-	// for(let i = 0; i < this.PanneauxJSON["questions"].length; i++){
-	//     this.load.image(this.PanneauxJSON["questions"][i][0],"data/panneaux/"+this.PanneauxJSON["questions"][i][1])
-	// }
-	this.load.image("chemin_piéton_recommandé","data/panneaux/chemin_piéton_recommandé.png");
-	this.load.image("cédez-le-passage","data/panneaux/cédez-le-passage.png");
-	this.load.image("double_sens_cyclable","data/panneaux/double_sens_cyclable.png");
-	this.load.image("feu_avec_cédez-le-passage-vélo","data/panneaux/feu_avec_cédez-le-passage-vélo.png");
-	this.load.image("impasse_sauf_vélo_et_pitéon","data/panneaux/impasse_sauf_vélo_et_pitéon.png");
-	this.load.image("interdit_aux_vélos","data/panneaux/interdit_aux_vélos.png");
-	this.load.image("interdit_sauf_vélo","data/panneaux/interdit_sauf_vélo.png");
-	this.load.image("interdit_à_tout_véhicule_motorisé","data/panneaux/interdit_à_tout_véhicule_motorisé.png");
-	this.load.image("pannonceau_cédez-le-passage-vélo","data/panneaux/pannonceau_cédez-le-passage-vélo.png");
-	this.load.image("piste_cyclable_recommandée","data/panneaux/piste_cyclable_recommandée.png");
-	this.load.image("sens_giratoire","data/panneaux/sens_giratoire.png");
-	this.load.image("stop","data/panneaux/stop.png");
-	this.load.image("voie_verte","data/panneaux/voie_verte.png");
-	this.load.image("vélo_pied_à_terre","data/panneaux/vélo_pied_à_terre.png");
-	this.load.image("zone_de_rencontre","data/panneaux/zone_de_rencontre.png");
 
 	
-	// boucler sur les images dans data/panneaux pour les charger ici
-	//this.load.image("panneau_#Tid", "data/panneau/Roue.png");
-
     }
 
     // method to be executed once the scene has been created
@@ -428,8 +416,10 @@ class playGame extends Phaser.Scene{
 			    
 			    if ( this.list_prizes[prize] == "Panneaux" ) {
 				let thisImage=this.PanneauxJSON["questions"][numQ][0];
-				if (thisImage in this.textures.list === false) {
-				    this.load.image(this.PanneauxJSON["questions"][numQ][0],"data/panneaux/"+this.PanneauxJSON["questions"][numQ][1])
+				if (! thisImage in this.textures.list) {
+				    this.canSpin = true;
+				    console.log("Unknonw "+numQ+" image : "+thisImage)
+				    return
 				}
 				this.prizeText.setText("Que signifie ce panneau ?");
 				this.PtrImage=this.add.image(this.wheelwidth+100,400,thisImage)

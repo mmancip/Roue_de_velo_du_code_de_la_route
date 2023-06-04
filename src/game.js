@@ -99,8 +99,6 @@ window.onload = function() {
 
         // resolution and scale mode
         scale: {
-            width: 1920,
-            height: 1080,
             parent: "thegame"
         },
         // mode: Phaser.Scale.FIT,
@@ -137,6 +135,15 @@ class playGame extends Phaser.Scene{
 
     // method to be executed when the scene preloads
     preload(){
+
+	if (this.sys.game.device.os.desktop){
+            this.game.scale.resize(1920,1080);
+	}
+	else{
+            this.game.scale.resize(1080,1920);
+	    this.game.scale.scaleMode=Phaser.Scale.HEIGHT_CONTROLS_WIDTH
+	    //this.game.scale.scaleMode=Phaser.Scale.FIT
+	}
 
 	//this.load.crossOrigin = true
 	
@@ -186,9 +193,18 @@ class playGame extends Phaser.Scene{
     // method to be executed once the scene has been created
     create(){
 
-	this.add.image(60,60,"logo_mdb")
-	this.add.image(this.wheelwidth+60,60,"logo_orsay")
+	var ScreenWidth=this.game.scale.width;
+	var ScreenHeight=this.game.scale.height;
 
+	if (this.sys.game.device.os.desktop){
+	    var Wheel_center=[40,100]
+	}
+	else{
+	    var Wheel_center=[parseInt(ScreenWidth/3.5),ScreenHeight/10]
+	}
+
+        // this.TitleContainer = this.add.container(this.ScreenWidth/2,40);
+	
 	var Title = this.add.text(this.wheelwidth/2,40, "Roue de Vélo du Code de la Route !", {
             font: "bold 48px Gabriola",
             align: "center",
@@ -196,12 +212,12 @@ class playGame extends Phaser.Scene{
         });
 	Title.setOrigin(0.4);
 
-	if (this.sys.game.device.os.desktop){
-	    var Wheel_center=[40,100]
-	}
-	else{
-	    var Wheel_center=[60,100]
-	}
+	var logo_mdb=this.add.image(60,60,"logo_mdb")
+	var logo_orsay=this.add.image(this.wheelwidth+60,60,"logo_orsay")
+
+	// this.TitleContainer.add(logo_mdb);
+	// this.TitleContainer.add(Title);
+	// this.TitleContainer.add(logo_orsay);
 	
 
         // starting degrees
@@ -221,10 +237,12 @@ class playGame extends Phaser.Scene{
 
 	if (this.sys.game.device.os.desktop){
             this.wheelContainer = this.add.container(this.wheelwidth/2+Wheel_center[0],this.wheelheight/2+Wheel_center[1]);
+	    this.add.rectangle(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height,0x000022);//0x00ffff
+	    //console.log(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height)
 	}
 	else{
             this.wheelContainer = this.add.container(this.wheelwidth/2+Wheel_center[0],this.wheelheight/2+Wheel_center[1]);
-	    this.add.rectangle(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height,0x000000);//0x00ffff
+	    this.add.rectangle(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height,0x000022);//0x00ffff
 	}
 
 	// For panneaux images
@@ -323,10 +341,13 @@ class playGame extends Phaser.Scene{
 	this.initprize="Tourne la roue !";
 	this.prizeText = this.add.text(0,0, this.initprize, {
             font: "bold 32px Arial",
-            align: "center",
-            color: "white"
+            align: "justify",
+            color: "white",
+	    fixedHeight:200,
+	    fixedWidth:800
         });
-
+	//align: "center",
+            
 	this.initquestion="Question :";
 	this.questionText = this.add.text(0,0, this.initquestion, {
             font: "bold 32px Arial",
@@ -335,39 +356,62 @@ class playGame extends Phaser.Scene{
 	    fixedHeight:400,
             fixedWidth:800});
 
+	//console.log(this.wheelwidth,Wheel_center,this.wheelheight+Wheel_center[1]);
 	if (this.sys.game.device.os.desktop){
-            console.log("desktop")
             // center the text
             this.prizeText.setOrigin(0.5);
 	    this.prizeText.setX(this.wheelwidth/2+Wheel_center[0]);
 	    this.prizeText.setY(this.wheelheight+Wheel_center[1]+40);
-	    this.questionText.setX(this.wheelwidth+parseInt(this.wheelwitdh/20));
-	    this.questionText.setY(parseInt(this.wheelheight/20));
+            this.questionText.setOrigin(0);
+	    this.questionText.setX(parseInt(1.2*this.wheelwidth));
+	    this.questionText.setY(parseInt(0.5*this.wheelheight));
 	}
 	else{
-            console.log("mobile")
             // center the text
-            this.prizeText.setOrigin(5);
-	    this.prizeText.setX(this.wheelwidth+0)
-	    this.prizeText.setY(parseInt(2*this.wheelheight/3))
-	    this.add.rectangle(this.prizeText.x, this.prizeText.y, this.prizeText.width, this.prizeText.height, 0xffff00);
-	    this.questionText.setX(2*this.wheelwidth+20);
-	    this.questionText.setY(parseInt(2*this.wheelheight/5));
-	    this.add.rectangle(this.questionText.x, this.questionText.y, this.questionText.width, this.questionText.height,0xffdd00);
+            //this.prizeText.setOrigin(5);
+	    this.prizeText.setX(this.wheelwidth/4)
+	    this.prizeText.setY(parseInt(1.4*this.wheelheight))
+            //this.questionText.setOrigin(5);
+	    this.questionText.setX(parseInt(this.wheelwidth/4));
+	    this.questionText.setY(parseInt(1.8*this.wheelheight));
 	}
-	
+	//this.add.rectangle(this.prizeText.x, this.prizeText.y, this.prizeText.width, this.prizeText.height, 0xffff00);
+	//this.add.rectangle(this.questionText.x, this.questionText.y, this.questionText.width, this.questionText.height,0xffdd00);
+	//console.log(this.prizeText.x, this.prizeText.y, this.prizeText.width, this.prizeText.height);
+	//console.log(this.questionText.x, this.questionText.y, this.questionText.width, this.questionText.height)
+	this.len_questionText=Math.round(this.questionText.width/parseInt(this.questionText.style.fontSize)*1.2);
+
         // the game has just started = we can spin the wheel
         this.canSpin = true;
 	
         // waiting for your input, then calling "spinWheel" function
         this.input.on("pointerdown", this.spinWheel, this);
         // waiting for your input, then calling "spinWheel" function
-        this.input.on("keyup-SPACE", this.spinWheel, this);
+        //this.input.on("keyup-SPACE", this.spinWheel, this);
 
     }
 
+    build_justif(answer) {
+	var justifQ = answer.split(" ")
+	var completeJustif = ""
+	let ilen=0
+	let prev=0
+	let s=0
+	for (s in justifQ) {
+	    ilen=ilen+justifQ[s].length
+	    if (ilen > this.len_questionText) {
+		justifQ.slice(prev,s).map(x=>completeJustif=completeJustif+x+" ");
+		completeJustif=completeJustif+"\n"
+		prev=s
+		ilen=0
+	    }
+	}
+	justifQ.slice(prev,s+1).map(x=>completeJustif=completeJustif+x+" ")
+
+	return completeJustif;
+    }
+    
     callQuestion(list_prizes,dict_prize,questions_prize,numQ) {
-	var len_questionTest=Math.round(this.questionText.width/parseInt(this.questionText.style.fontSize)*1.2);
 	var titre_prize=dict_prize["titre"]
 	
 	// displaying prize text
@@ -383,42 +427,28 @@ class playGame extends Phaser.Scene{
 	    this.prizeText.setText("Que signifie ce panneau ?");
 	    
 	    if (this.sys.game.device.os.desktop){
-		console.log("desktop")
 		this.PtrImage=this.add.image(this.wheelwidth+100,400,thisImage)
 	    }
 	    else{
-		console.log("mobile")
-		this.PtrImage=this.add.image(this.wheelwidth/2,this.wheelheight/2,thisImage)
+		this.PtrImage=this.add.image(this.wheelwidth,this.wheelheight,thisImage)
 	    }
 	} else {
-	    var justifQ = questions_prize[numQ][0].split(" ")
-	    var completeJustif = ""
-	    let ilen=0
-	    let prev=0
-	    let s=0
-	    for (s in justifQ) {
-		ilen=ilen+justifQ[s].length
-		if (ilen > len_questionTest) {
-		    justifQ.slice(prev,s).map(x=>completeJustif=completeJustif+x+" ");
-		    completeJustif=completeJustif+"\n"
-		    prev=s
-		    ilen=0
-		}
-	    }
-	    justifQ.slice(prev,s+1).map(x=>completeJustif=completeJustif+x+" ")
-	    
+	    let completeJustif=this.build_justif(questions_prize[numQ][0]);
 	    this.questionText.setText(titre_prize+"\n\n"+completeJustif);
 	}
 	
-	this.input.keyboard.on('keyup-SPACE', event =>
+        this.input.on("pointerdown", event =>
 	    {
+		let completeJustif=""
 		if ( list_prizes == "Panneaux" ) {
-		    this.prizeText.setText(this.PanneauxJSON["questions"][numQ][2]);
+		    completeJustif=this.build_justif(this.PanneauxJSON["questions"][numQ][2]);
 		} else {
-		    this.prizeText.setText(questions_prize[numQ][1]);
+		    completeJustif=this.build_justif(questions_prize[numQ][1]);
 		}
+		this.prizeText.setText(completeJustif);
+		this.input.on("pointerdown", this.spinWheel, this);
 	    });
-	
+	//	this.input.keyboard.on('keyup-SPACE', event =>
 	
     }
     
@@ -434,7 +464,8 @@ class playGame extends Phaser.Scene{
 	    try {
 		this.PtrImage.destroy();
 	    } catch(e) {}
-            this.input.keyboard.off('keyup-SPACE');
+            //this.input.keyboard.off('keyup-SPACE');
+	    this.input.off('pointerdown');
 	    
             // the wheel will spin round for some times. This is just coreography
             let rounds = Phaser.Math.Between(gameOptions.wheelRounds.min, gameOptions.wheelRounds.max);
@@ -511,8 +542,8 @@ class playGame extends Phaser.Scene{
 			    
 			    // player can spin again
                             this.canSpin = true;
-			    this.input.on("keyup-SPACE", this.spinWheel, this);
-                            //this.prizeText.setText(this.initquestion);
+			    //this.input.on("keyup-SPACE", this.spinWheel, this);
+                            this.prizeText.setText(this.initquestion);
                         }
                     })
                 }

@@ -205,16 +205,16 @@ class playGame extends Phaser.Scene{
 
         // this.TitleContainer = this.add.container(this.ScreenWidth/2,40);
 	
-	var Title = this.add.text(this.wheelwidth/2,40, "Roue de Vélo du Code de la Route !", {
+	var Title = this.add.text(10,10, "Roue de Vélo du Code de la Route !", {
             font: "bold 48px Gabriola",
             align: "center",
             color: "white"
         });
 	Title.setOrigin(0.4);
-
 	var logo_mdb=this.add.image(60,60,"logo_mdb")
-	var logo_orsay=this.add.image(this.wheelwidth+60,60,"logo_orsay")
-
+	var logo_orsay=this.add.image(60,60,"logo_orsay")
+	
+	
 	// this.TitleContainer.add(logo_mdb);
 	// this.TitleContainer.add(Title);
 	// this.TitleContainer.add(logo_orsay);
@@ -237,12 +237,10 @@ class playGame extends Phaser.Scene{
 
 	if (this.sys.game.device.os.desktop){
             this.wheelContainer = this.add.container(this.wheelwidth/2+Wheel_center[0],this.wheelheight/2+Wheel_center[1]);
-	    this.add.rectangle(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height,0x000022);//0x00ffff
 	    //console.log(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height)
 	}
 	else{
             this.wheelContainer = this.add.container(this.wheelwidth/2+Wheel_center[0],this.wheelheight/2+Wheel_center[1]);
-	    this.add.rectangle(this.wheelContainer.x, this.wheelContainer.y, this.wheelContainer.width, this.wheelContainer.height,0x000022);//0x00ffff
 	}
 
 	// For panneaux images
@@ -338,8 +336,39 @@ class playGame extends Phaser.Scene{
         // adding the pin in the middle of the canvas
         this.pin = this.add.sprite(this.wheelwidth/2+Wheel_center[0],this.wheelheight/2+Wheel_center[1], "pin");
 
+
+	if (this.sys.game.device.os.desktop){
+	    Title.setOrigin(0.4);
+	    //Title.setX(this.wheelwidth/2);
+	    //Title.setY(40);
+	    this.children.getAll()[0].setX(this.wheelwidth/2)
+	    this.children.getAll()[0].setY(40)
+	    //logo_mdb.setX(60);
+	    //logo_mdb.setY(60);
+	    this.children.getAll()[1].setX(60)
+	    this.children.getAll()[1].setY(60)
+	    //logo_orsay.setX(this.wheelwidth+60);
+	    //logo_orsay.setX(60);
+	    this.children.getAll()[2].setX(this.wheelwidth+60)
+	    this.children.getAll()[2].setY(60)
+	}
+	else{
+	    Title.setOrigin(0.4);
+	    this.children.getAll()[0].setX(this.wheelwidth/2+200)
+	    this.children.getAll()[0].setY(40)
+	    //logo_mdb.setX(60);
+	    //logo_mdb.setY(60);
+	    this.children.getAll()[1].setX(60)
+	    this.children.getAll()[1].setY(60)
+	    //logo_orsay.setX(this.wheelwidth+60);
+	    //logo_orsay.setX(60);
+	    this.children.getAll()[2].setX(this.wheelwidth+500)
+	    this.children.getAll()[2].setY(60)
+	}
+	
+	
 	this.initprize="Tourne la roue !";
-	this.prizeText = this.add.text(0,0, this.initprize, {
+	this.prizeText = this.add.text(10,10, this.initprize, {
             font: "bold 32px Arial",
             align: "justify",
             color: "white",
@@ -349,7 +378,7 @@ class playGame extends Phaser.Scene{
 	//align: "center",
             
 	this.initquestion="Question :";
-	this.questionText = this.add.text(0,0, this.initquestion, {
+	this.questionText = this.add.text(10,10, this.initquestion, {
             font: "bold 32px Arial",
             align: "justify",
             color: "white",

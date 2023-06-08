@@ -1,13 +1,13 @@
 {"titre":"Nouveautés à vélo et autres EDPM",
  "questions":[
      ["Les EDPM sont-ils piétons ou vélos ?","R412-43-1: I. "],
-     ["les vélos sont-ils de catégories inférieurs ?","B"],
-     ["Les doubles sens cyclables sont-ils obligatoires dans les rues à sens uniques à 30km/h ?","C"], 
-     ["Qu'est qu'un double sens cyclable ?","D"],
-     ["Les vélos peuvent-il passer les feux rouges sans s'arrêter maintenant ?","E"],
-     ["Quel panneau doit obligatoirement être installer par les mairies pour matérialiser un DSC ?","F"],
-     ["Qu'est-ce qu'une zone de rencontre ?","G"],
-     ["Comment les cyclistes empruntent les chaucidou ou Chaussée à voie centrale banalisée ?","H"], 
+     ["les vélos sont-ils de catégories inférieurs ?","Les vélos doivent respecter les piétons, catégorie la plus fragile, mais sont considérés comme fragile vis-à-vis des véhicules motorisés."],
+     ["Les doubles sens cyclables sont-ils obligatoires dans les rues à sens uniques à 30km/h ?","Seuls les maires et les préfets peuvent interdire certaines rue à sens unique au DSC. L'arrêté doit être publié."], 
+     ["Qu'est qu'un double sens cyclable ?","C'est la possibilité de remonter une rue à sens unique en milieu urbain à vélo. Obligatoire depuis 2020."],
+     ["Les vélos peuvent-il passer les feux rouges sans s'arrêter maintenant ?","Les pannonceaux M12 transforment les feux en cédez-le-passage dans la(es) direction(s) indiquée(s) seulement."],
+     ["Quel panneau doit obligatoirement être installer par les mairies pour matérialiser un DSC ?","Le panneau à l'entrée de rue ou aux intersections doit réglementaire être posée par les mairies. Pas le pannonceau 'sauf vélo'."],
+     ["Qu'est-ce qu'une zone de rencontre ?","Une zone de rencontre indique une zone à faible vitesse (<20km/h)pour tous les véhicules, où les piétons circulent librement."],
+     ["Comment les cyclistes empruntent les chaucidou ou Chaussée à voie centrale banalisée ?","Un cycliste doit rester sur sa bande latérale dans un chaussidou."], 
      ["Les poids lourds ont été contraints d'adopter une disposition de prévention peu sécurisante pour les vélos, laquelle ?","Les véhicules de plus de 3,5 tonnes sont équipés d'une signalisation matérialisant la position des angles morts apposée sur le véhicule. Cette signalisation est apposée selon des modalités adaptées pour une visibilité la plus grande possible, en particulier pour les cyclistes, les piétons et les utilisateurs d'engins de déplacement personnels.(R313??)"],
      ["à quel age minimal peut-on conduire un EDPM ?","R412-43-3 I.-Tout conducteur d'engin de déplacement personnel motorisé doit être âgé d'au moins douze ans."]
  ]

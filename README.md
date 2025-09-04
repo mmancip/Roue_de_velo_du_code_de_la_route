@@ -26,6 +26,10 @@ Execution (temporaire) :
 > cd src
 > ..\node_modules\.bin\http-server -s -o --trace-deorecation
 ```
+sous cygwin :
+```
+../node_modules/.bin/http-server -s -o --trace-deorecation
+```
 
 Données ; les données de questions sont dans les fichiers json (très facile à modifier) dans src/data.
 Si vous voulez les améliorer, passer les moi (issue sous Github ou mèl) après avoir modifié, sauvé, relancé la page et testé.

@@ -10,17 +10,29 @@ https://semestriel.framapad.org/p/Roue_du_code_de_la_route
 (Merci de ne pas modifier sans l'accord du développeur, please don't change without agreement)
 
 Install :
-install node on Windows or Linux OS :
-Download on official
+install on Windows or Linux OS :
+Download last version of node on official
 	 https://nodejs.org/en/download
 
 And use administration PowerShell window
 * nvm install 18.16.0
 * nvm use 18.16.0
-In source dir use :
+In source dir (Roue/src) use :
 ```
 > npm install
 ```
+
+Error PowerShell Policy with this npm install:
+```
+Get-ExecutionPolicy -List
+Set-ExecutionPolicy -Scope CurrentUser  -ExecutionPolicy RemoteSigned
+```
+
+Not for local usr :
+```
+npm audit fix --force
+```
+
 Execution (temporaire) :
 ```
 > cd src
